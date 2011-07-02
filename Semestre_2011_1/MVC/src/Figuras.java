@@ -12,14 +12,19 @@ import modelo.Modelo;
 
 import controlador.Controlador;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 
 public class Figuras {
-	
+
 	public static void main(String[] args) {
 		try{
 			final JFrame frame = new JFrame();
-			frame.setTitle("Ejemplo Modelo Vista Controlador (MVC) Compíladores e Interpretes UNET");
+
+            		frame.setTitle("Diagramas T");
 			//Set the window initial Size & default close operation
 			frame.setVisible(true);
 			Dimension fullscreen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -32,7 +37,7 @@ public class Figuras {
 		    guiobjects.setLayout(new BorderLayout());
 			Modelo modelo = new Modelo();
 			Vista vista = new Vista(new Dimension(1000,800),modelo);
-			final Controlador controlador = new Controlador(modelo,vista);
+			final Controlador controlador = new Controlador(modelo,vista,frame);
 			vista.controlador=controlador; //Lo registro para su uso, deberia ser un metodo pero por simplificacion
 			JScrollPane ModelScroll = new JScrollPane(controlador.getVista(), ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 			guiobjects.add(ModelScroll);
@@ -50,5 +55,8 @@ public class Figuras {
 		   System.out.println("Saliendo Adios...");
 		   System.exit(0);
         }
+
+
+
 
 }

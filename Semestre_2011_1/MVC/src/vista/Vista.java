@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import modelo.Modelo;
 import modelo.Figura;
@@ -20,11 +22,11 @@ public class Vista extends JPanel {
 	static final long serialVersionUID = 0L;
 	private Modelo modelo;
 	public Controlador controlador;  //IMPORTANTE DEBE SER REGISTRADO O TODO FALLA
-	
+
 	public Vista(Dimension size, Modelo modelo){
 		super();
 		this.modelo=modelo;
-		
+
 		setPreferredSize(size);
 		setBackground(Color.white);
 		setFocusable(true);
@@ -36,7 +38,12 @@ public class Vista extends JPanel {
 			public void mouseExited(MouseEvent event) {}
 			public void mouseMoved(MouseEvent event) {}
 			public void mousePressed(MouseEvent event) {
-			    eVmousePressed(event);	}
+                try {
+                    eVmousePressed(event);
+                } catch (Throwable ex) {
+                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                }
+	}
 			public void mouseReleased(MouseEvent event) {
 				eVmouseReleased(event);	}
 			public void mouseDragged(MouseEvent event) {
@@ -45,40 +52,40 @@ public class Vista extends JPanel {
 		this.addMouseListener(mouseControl);
 		this.addMouseMotionListener(mouseControl);
 	}
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		pintarTodo(g2);
 	}
-	
+
 	private void pintarTodo(Graphics2D g){
 		for (Figura elemento : modelo.getListado()) {
 			elemento.dibujar(g);
 		}
 	}
 
-	public void eVmousePressed(MouseEvent ev) {
+	public void eVmousePressed(MouseEvent ev) throws Throwable {
 		if(controlador!=null)
 		{
 			controlador.eVmousePressed(ev);
 		}
 	}
-	
+
 	public void eVmouseDragged(MouseEvent ev) {
 		if(controlador!=null)
 		{
 			controlador.eVmouseDragged(ev);
 		}
 	}
-	
+
 	public void eVmouseReleased (MouseEvent ev) {
 		if(controlador!=null)
 		{
 			controlador.eVmouseReleased(ev);
 		}
 	}
-	
+
 }
 
 

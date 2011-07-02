@@ -7,17 +7,25 @@ public abstract class Figura {
 	protected Point posicion;
 	protected boolean seleccionada;
 	public abstract boolean dentroFigura(Point p);
-	public abstract void dibujar(Graphics g);	
-	
+	public abstract void dibujar(Graphics g);
+
+
+        public void eliminar() throws Throwable
+        {         
+           this.posicion = new Point(5000,5000);
+           
+        }
+
 	public void setPosicion(Point posicion)
 	{
 		this.posicion=posicion;
+
 	}
-	
+
 	public int getX(){
 		return posicion.x;
 	}
-	
+
 	public int getY(){
 		return posicion.y;
 	}
@@ -25,7 +33,7 @@ public abstract class Figura {
 	Point getPosicion(){
 		return posicion;
 	}
-	
+
 	public boolean getSeleccionada(){
 		return seleccionada;
 	}
@@ -35,3 +43,5 @@ public abstract class Figura {
 	}
 
 }
+
+
