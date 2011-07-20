@@ -9,6 +9,7 @@ public class Maquina extends Figura {
     private int ancho;
 
     public Maquina(Point posicion, int ancho) {
+        super();
         this.descripcion = "Maquina";
         this.posicion = posicion;
         this.ancho = ancho;

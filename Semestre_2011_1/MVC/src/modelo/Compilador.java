@@ -24,6 +24,7 @@ public class Compilador extends Figura {
     }
 
     public Compilador(Point posicion, int ancho) {
+        super();
         this.descripcion = "Compilador";
         this.posicion = posicion;
         this.ancho = ancho;
@@ -84,10 +85,7 @@ public class Compilador extends Figura {
 
         g.setColor(Color.BLUE);
         g.fillPolygon(xpuntos, ypuntos, 8);
-        if (this.getSeleccionada()) {
-            g.setColor(Color.RED);
-            g.fillPolygon(xpuntos, ypuntos, 8);
-        }
+      
     }
 
     @Override

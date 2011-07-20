@@ -7,6 +7,7 @@ public abstract class Figura {
 
     protected Point posicion;
     protected boolean seleccionada;
+    protected boolean visitada;
     protected String descripcion;
     protected String var[];
 
@@ -43,6 +44,19 @@ public abstract class Figura {
     Point getPosicion() {
         return posicion;
     }
+
+    public Figura() {
+    visitada = false;
+    }
+
+    public boolean isVisitada() {
+        return visitada;
+    }
+
+    public void setVisitada(boolean visitada) {
+        this.visitada = visitada;
+    }
+
 
     public boolean getSeleccionada() {
         return seleccionada;

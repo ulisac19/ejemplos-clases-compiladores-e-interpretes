@@ -39,6 +39,7 @@ public class Programa extends Figura {
     }
 
     public Programa(Point posicion, int ancho) {
+        super();
         this.descripcion = "Programa";
         this.posicion = posicion;
         this.ancho = ancho;

@@ -15,6 +15,7 @@ public class Interprete extends Figura {
     private String lenguaje_fuente;
 
     public Interprete(Point posicion, int ancho) {
+        super();
         this.descripcion = "Interprete";
         this.posicion = posicion;
         this.ancho = ancho;
