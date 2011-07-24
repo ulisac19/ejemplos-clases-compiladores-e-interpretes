@@ -7,6 +7,7 @@ import java.awt.Point;
 public class Maquina extends Figura {
 
     private int ancho;
+    private String lenguaje_final = "";
 
     public Maquina(Point posicion, int ancho) {
         super();
@@ -56,10 +57,8 @@ public class Maquina extends Figura {
 
         g.setColor(Color.ORANGE);
         g.fillPolygon(xpuntos, ypuntos, 5);
-        if (this.getSeleccionada()) {
-            g.setColor(Color.CYAN);
-            g.fillPolygon(xpuntos, ypuntos, 5);
-        }
+        g.setColor(Color.BLACK);
+        g.drawString(lenguaje_final, this.getX() + 13, this.getY() + 17);
     }
 
     @Override
@@ -70,6 +69,7 @@ public class Maquina extends Figura {
     @Override
     public void setlenguajes(String[] vari) {
         this.var = vari;
+        lenguaje_final = vari[0];
     }
 
     @Override

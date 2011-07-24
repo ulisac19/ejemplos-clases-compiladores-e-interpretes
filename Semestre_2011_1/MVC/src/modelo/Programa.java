@@ -7,6 +7,7 @@ import java.awt.Point;
 public class Programa extends Figura {
 
     private int ancho;
+    private String lenguaje_fuente = "";
 
     public String getLenguaje_fuente() {
         return lenguaje_fuente;
@@ -15,7 +16,6 @@ public class Programa extends Figura {
     public void setLenguaje_fuente(String lenguaje_fuente) {
         this.lenguaje_fuente = lenguaje_fuente;
     }
-    private String lenguaje_fuente;
     
     public int getAncho() {
         return ancho;
@@ -67,11 +67,8 @@ public class Programa extends Figura {
         g.setColor(Color.yellow);
         g.fillRect(this.getX(), this.getY(), ancho, ancho * 2);
         g.fillOval(this.getX() - (int) (ancho * .25), this.getY() - ancho, this.radio * 2, this.radio * 2);
-        if (this.getSeleccionada()) {
-            g.setColor(Color.black);
-            g.fillRect(this.getX(), this.getY(), ancho, ancho * 2);
-            g.fillOval(this.getX() - (int) (ancho * .25), this.getY() - ancho, this.radio * 2, this.radio * 2);
-        }
+        g.setColor(Color.BLACK);
+        g.drawString(lenguaje_fuente, this.getX()+13, this.getY()+72);
     }
 
     @Override
@@ -83,6 +80,7 @@ public class Programa extends Figura {
     public void setlenguajes(String[] vari) {
         this.var = new String[vari.length];
         this.var = vari;
+        lenguaje_fuente = vari[0];
     }
 
     @Override

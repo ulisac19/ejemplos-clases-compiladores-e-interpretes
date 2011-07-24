@@ -7,12 +7,14 @@ package modelo;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import javax.swing.JLabel;
 
 public class Interprete extends Figura {
 
+    JLabel etiq;
     private int ancho;
-    private String lenguaje_final;
-    private String lenguaje_fuente;
+    private String lenguaje_final = "";
+    private String lenguaje_fuente = "";
 
     public Interprete(Point posicion, int ancho) {
         super();
@@ -20,6 +22,8 @@ public class Interprete extends Figura {
         this.posicion = posicion;
         this.ancho = ancho;
         this.seleccionada = false;  //Deberia estar en el constructor pero por simplicidad
+        etiq = new JLabel("");
+        etiq.setBounds(0, 0, 100, 20);
     }
 
     public int getAncho() {
@@ -46,10 +50,9 @@ public class Interprete extends Figura {
     public void dibujar(Graphics g) {
         g.setColor(Color.pink);
         g.fillRect(this.getX(), this.getY(), ancho, ancho * 2);
-        if (this.getSeleccionada()) {
-            g.setColor(Color.MAGENTA);
-            g.fillRect(this.getX(), this.getY(), ancho, ancho * 2);
-        }
+        g.setColor(Color.BLACK);
+        g.drawString(lenguaje_fuente, this.getX()+13, this.getY()+17);
+        g.drawString(lenguaje_final, this.getX()+13, this.getY()+72);
     }
 
     @Override
@@ -61,6 +64,8 @@ public class Interprete extends Figura {
     public void setlenguajes(String[] vari) {
         this.var = new String[vari.length];
         this.var = vari;
+        lenguaje_fuente = vari[0];
+        lenguaje_final = vari[1];
     }
 
     @Override

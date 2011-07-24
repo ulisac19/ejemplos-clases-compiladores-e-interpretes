@@ -2,14 +2,17 @@ package modelo;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Compilador extends Figura {
 
     private int ancho;
-    private String lenguaje_final;
-    private String lenguaje_fuente;
-    private String lenguaje_base;
+    private String lenguaje_final = "";
+    private String lenguaje_fuente = "";
+    private String lenguaje_base = "";
 
     public String getLenguaje_base() {
         return lenguaje_base;
@@ -85,7 +88,10 @@ public class Compilador extends Figura {
 
         g.setColor(Color.BLUE);
         g.fillPolygon(xpuntos, ypuntos, 8);
-      
+        g.setColor(Color.BLACK);
+        g.drawString(lenguaje_fuente, this.getX()-30, this.getY()+23);
+        g.drawString(lenguaje_final, this.getX()+45, this.getY()+23);
+        g.drawString(lenguaje_base, this.getX()+7, this.getY()+70);
     }
 
     @Override
